@@ -67,8 +67,6 @@
     "prettier-eslint-cli": "5.0.1"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": [
-      "npm run lint"
-    ]
+    "*.{js,jsx,ts,tsx}": "eslint"
   }
 }
