@@ -12,6 +12,7 @@
     "@types/react": "^16.14.6",
     "@types/react-dom": "^16.9.12",
     "@types/react-redux": "^7.1.16",
+    "lint-staged": "^11.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
@@ -26,7 +27,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
     "format": "prettier --write 'src/**/*.{ts,js,tsx,scss,css,json}'",
     "isready": "npm run format && npm run lint && npm run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "eslintConfig": {
     "extends": "react-app"
