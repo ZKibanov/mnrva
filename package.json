@@ -26,7 +26,6 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
     "format": "prettier --write 'src/**/*.{ts,js,tsx,scss,css,json}'",
     "isready": "npm run format && npm run lint && npm run build",
-    "pre-commit": "lint-staged",
     "prepare": "husky install"
   },
   "eslintConfig": {
@@ -61,15 +60,8 @@
     "eslint-plugin-react": "7.23.2",
     "eslint-plugin-react-hooks": "4.2.0",
     "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
     "prettier": "2.3.0",
     "prettier-eslint": "12.0.0",
     "prettier-eslint-cli": "5.0.1"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,scss}": [
-      "npm run lint",
-      "npm run format"
-    ]
   }
 }
