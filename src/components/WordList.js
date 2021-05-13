@@ -5,7 +5,7 @@ import './WordList.css';
 
 function WordList() {
   const words = useSelector((store) => store.wordsArray);
-  const wordsComponents = words.map((word) => WordCard(word));
+  const wordsComponents = words.map(item => WordCard(item));
   return (
     <div className="item-list-wrapper">
       <ul className="item-list">{wordsComponents}</ul>

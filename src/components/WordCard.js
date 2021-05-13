@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector ,useDispatch } from 'react-redux';
+import {addWord,deleteWord} from '../store/syns'
 import './WordCard.css';
 
 function WordCard(wordObject) {
+  const dispatch = useDispatch();
   const { id, value } = wordObject;
   const [isEditing, setEditing] = useState(false);
   const [inputValue, setInputValue] = useState(value);
@@ -16,8 +19,8 @@ function WordCard(wordObject) {
   };
 
   const deleteItem = () => {
-    console.log(id);
-  };
+dispatch(deleteWord(id))  
+};
 
   const onInputChange = (ev) => {
     console.log(ev.target.value);
@@ -27,9 +30,8 @@ function WordCard(wordObject) {
   const WordEditForm = (
     <div className="form-wrapper">
       <form className="word-edit-form" onSubmit={saveChanges}>
-        <>
-        </>
-       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+        <></>
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="newWord" className="word-edit-form_label">
           редактирование синонима:
         </label>{' '}

@@ -1,10 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React,{useState} from 'react';
+import { useSelector ,useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import {addWord} from '../store/syns'
 import './NewWordForm.css';
 
 function NewWordForm() {
+    const dispatch = useDispatch();
+    const [inputValue, setInputValue] = useState('');
+
+  const saveChanges = (ev) => {
+    ev.preventDefault();
+    dispatch(addWord(inputValue))
+  };
+
+  const onInputChange = (ev) => {
+    setInputValue(ev.target.value);
+    console.log(ev.target.value);
+  };
+
   const antIcon = (
     <LoadingOutlined style={{ color: 'white', fontSize: 18 }} spin />
   );
@@ -18,7 +32,7 @@ function NewWordForm() {
   const MainButton = isLoading ? (
     LoadingIndicator
   ) : (
-    <button type="submit" className="submit-btn">
+    <button type="submit" className="submit-btn" onClick={saveChanges}>
       добавить
     </button>
   );
@@ -26,14 +40,12 @@ function NewWordForm() {
   return (
     <div className="word-edit-form-wrapper">
       <h2 className="form-header">Синонимы</h2>
-      <>
-      </>
-              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+      <></>
+      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
       <button type="button" className="word-edit-form_info-btn" />
-      <form className="word-edit-form">
-        <>
-        </>
-                  {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      <form className="word-edit-form" onSubmit={saveChanges}>
+        <></>
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="newWord" className="word-edit-form_label">
           добавление синонима:
         </label>{' '}
@@ -42,6 +54,7 @@ function NewWordForm() {
           id="newWord"
           className="word-edit-form_input"
           placeholder="Введите название"
+          onChange={onInputChange}
         />
       </form>
       {MainButton}

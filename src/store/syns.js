@@ -5,12 +5,7 @@ import { Reducer, ReducerAction } from 'react';
 const initialState = {
   isLoading: false,
   isError: false,
-  wordsArray: [
-    { value: 'Процент', id: 1 },
-    { value: 'Золотая', id: 2 },
-    { value: 'Премиум', id: 3 },
-    { value: 'Кредит', id: 4 },
-  ],
+  wordsArray: [{ value: 'Процент', id: 1 },{ value: 'Золотая', id: 2 },{ value: 'Премиум', id: 3 },{ value: 'Кредит', id: 4 }],
 };
 
 // Action types
@@ -54,17 +49,27 @@ export const setLoading = (isLoading) => ({
 // Reducer
 /* eslint-disable no-return-assign */
 export default function reducer(state = initialState, action) {
-  switch (action) {
-    case ADD_WORD:
-      return state.wordsArray.push({
-        value: action.payload.word,
-        id: Date.now(),
-      });
+  switch (action.type) {
+    case ADD_WORD:{
+        const newWords = [ ...state.wordsArray,{ value: action.payload.word,
+            id: Date.now()}]
 
-    case DELETE_WORD:
-      return state.wordsArray.filter(
-        (wordObject) => wordObject.id !== action.payload.id
-      );
+        const newState = {
+            ...state,
+            wordsArray:newWords
+        }
+      return newState;
+    }
+
+    case DELETE_WORD:{
+        const newWords = [ ...state.wordsArray]
+        const newState = {
+            ...state,
+            wordsArray: newWords.filter(
+                (wordObject) => wordObject.id !== action.payload.id
+              )};
+      return newState;
+    }
 
     default:
       return state;
