@@ -1,20 +1,27 @@
-import React,{useState} from 'react';
-import { useSelector ,useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import {addWord} from '../store/syns'
+import { addWord } from '../store/syns';
 import './NewWordForm.css';
 
 function NewWordForm() {
-    const dispatch = useDispatch();
-    const [inputValue, setInputValue] = useState('');
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState('');
+  const [inputError,setInputError] = useState(false)
 
   const saveChanges = (ev) => {
     ev.preventDefault();
-    dispatch(addWord(inputValue))
+    if (inputValue.trim().length === 0) {
+      setInputError(true)
+    } else {
+    setInputValue('')
+    dispatch(addWord(inputValue.trim()));
+    }
   };
 
   const onInputChange = (ev) => {
+    setInputError(false)
     setInputValue(ev.target.value);
     console.log(ev.target.value);
   };
@@ -37,6 +44,9 @@ function NewWordForm() {
     </button>
   );
 
+  const errorMessage = (<div className="error-message">Текст ошибки</div>)
+  const errorPlaceholder = "Введите что-нибудь"
+  const standartPlaceHolder = "Введите название"
   return (
     <div className="word-edit-form-wrapper">
       <h2 className="form-header">Синонимы</h2>
@@ -52,12 +62,14 @@ function NewWordForm() {
         <input
           type="text"
           id="newWord"
+          value={inputValue}
           className="word-edit-form_input"
-          placeholder="Введите название"
+          placeholder={inputError?errorPlaceholder:standartPlaceHolder}
           onChange={onInputChange}
         />
       </form>
       {MainButton}
+      {inputError && errorMessage}
     </div>
   );
 }

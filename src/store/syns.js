@@ -5,12 +5,13 @@ import { Reducer, ReducerAction } from 'react';
 const initialState = {
   isLoading: false,
   isError: false,
-  wordsArray: [{ value: 'Процент', id: 1 },{ value: 'Золотая', id: 2 },{ value: 'Премиум', id: 3 },{ value: 'Кредит', id: 4 }],
+  wordsArray: [],
 };
 
 // Action types
 const ADD_WORD = 'addWord';
 const DELETE_WORD = 'deleteWord';
+const SET_WORDS_TO_STORE = 'setWordsToStore';
 const SET_ERROR = 'setError';
 const SET_LOADING = 'setLoading';
 const GET_DATA = 'getData';
@@ -32,6 +33,13 @@ export const deleteWord = (id) => ({
   },
 });
 
+export const setWordsToStore = (words) => ({
+  type: SET_WORDS_TO_STORE,
+  payload:{
+    words
+  }
+})
+
 export const setError = (isError) => ({
   type: SET_ERROR,
   payload: {
@@ -50,24 +58,42 @@ export const setLoading = (isLoading) => ({
 /* eslint-disable no-return-assign */
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_WORD:{
-        const newWords = [ ...state.wordsArray,{ value: action.payload.word,
-            id: Date.now()}]
+    case ADD_WORD: {
+      const newWords = [
+        ...state.wordsArray,
+        { value: action.payload.word, id: Date.now() },
+      ];
 
-        const newState = {
-            ...state,
-            wordsArray:newWords
-        }
+      const newState = {
+        ...state,
+        wordsArray: newWords,
+      };
       return newState;
     }
 
-    case DELETE_WORD:{
-        const newWords = [ ...state.wordsArray]
-        const newState = {
-            ...state,
-            wordsArray: newWords.filter(
-                (wordObject) => wordObject.id !== action.payload.id
-              )};
+    case DELETE_WORD: {
+      const newWords = [...state.wordsArray];
+      const newState = {
+        ...state,
+        wordsArray: newWords.filter(
+          (wordObject) => wordObject.id !== action.payload.id
+        ),
+      };
+      return newState;
+    }
+
+    case SET_WORDS_TO_STORE:{
+      const newState = {...state,wordsArray:action.payload.words}
+      return newState;
+    }
+    
+    case SET_LOADING:{
+      const newState = {...state,isLoading:action.payload.isLoading}
+      return newState;
+    }
+
+    case SET_ERROR:{
+      const newState = {...state,isError:action.payload.isError}
       return newState;
     }
 

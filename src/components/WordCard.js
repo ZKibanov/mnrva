@@ -1,30 +1,29 @@
 import React, { useState } from 'react';
-import { useSelector ,useDispatch } from 'react-redux';
-import {addWord,deleteWord} from '../store/syns'
+import { useDispatch } from 'react-redux';
+import { addWord, deleteWord } from '../store/syns';
+import ErrorBoundery from '../hoc/ErrorBoundary'
 import './WordCard.css';
 
 function WordCard(wordObject) {
+  const { id, value } = wordObject;  
   const dispatch = useDispatch();
-  const { id, value } = wordObject;
-  const [isEditing, setEditing] = useState(false);
-  const [inputValue, setInputValue] = useState(value);
 
   const turnToEdit = () => {
-    setEditing(true);
+ //   setEditing(true);
   };
 
   const saveChanges = (ev) => {
     ev.preventDefault();
-    setEditing(false);
+   // setEditing(false);
   };
 
   const deleteItem = () => {
-dispatch(deleteWord(id))  
-};
+    dispatch(deleteWord(id))
+  };
 
   const onInputChange = (ev) => {
     console.log(ev.target.value);
-    setInputValue(ev.target.value);
+ //   setInputValue(ev.target.value);
   };
 
   const WordEditForm = (
@@ -39,7 +38,7 @@ dispatch(deleteWord(id))
           type="text"
           id="newWord"
           className="word-edit-form_input"
-          defaultValue={inputValue}
+          defaultValue={value}
           placeholder="Введите название"
           onChange={onInputChange}
         />
@@ -71,8 +70,7 @@ dispatch(deleteWord(id))
   return (
     <li key={id}>
       <div>
-        {isEditing && WordEditForm}
-        {!isEditing && Item}
+        {Item}
       </div>
     </li>
   );
