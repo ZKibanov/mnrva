@@ -1,0 +1,152 @@
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+footer,
+ul,
+ol,
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+ul,
+ol,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul,
+ol,
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Сброс стилей у кнопки.*/
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* inter-regular - latin_cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/inter-v3-latin_cyrillic-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/inter-v3-latin_cyrillic-regular.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../fonts/inter-v3-latin_cyrillic-regular.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../fonts/inter-v3-latin_cyrillic-regular.woff') format('woff'),
+    /* Modern Browsers */ url('../fonts/inter-v3-latin_cyrillic-regular.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('../fonts/inter-v3-latin_cyrillic-regular.svg#Inter') format('svg'); /* Legacy iOS */
+}
+
+/* inter-700 - latin_cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/inter-v3-latin_cyrillic-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/inter-v3-latin_cyrillic-700.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../fonts/inter-v3-latin_cyrillic-700.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */ url('../fonts/inter-v3-latin_cyrillic-700.woff')
+      format('woff'),
+    /* Modern Browsers */ url('../fonts/inter-v3-latin_cyrillic-700.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('../fonts/inter-v3-latin_cyrillic-700.svg#Inter') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Kenyan Coffee';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/ coffee bd.eot'); /* IE9 Compat Modes */
+  src: local('kenyan coffee bd'),
+    url('../fonts/kenyan coffee bd.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('../fonts/kenyan coffee bd.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('../fonts/kenyan coffee bd.woff')
+      format('woff'),
+    /* Modern Browsers */ url('../fonts/kenyan coffee bd.ttf')
+      format('truetype'); /* Safari, Android, iOS */
+}

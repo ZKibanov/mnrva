@@ -1,0 +1,135 @@
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+footer,
+ul,
+ol,
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+ul,
+ol,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul,
+ol,
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Сброс стилей у кнопки.*/
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+a {
+    text-decoration:none;
+  }
+  
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+  @font-face {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/Circe-Regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('./fonts/Circe-Regular.eot') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/Circe-Regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/Circe-Regular.ttf') format('truetype') /* Safari, Android, iOS */
+  }
+ 
+  @font-face {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./fonts/Circe-Bold.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('./fonts/Circe-Bold.eot') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/Circe-Bold.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/Circe-Bold.ttf') format('truetype') /* Safari, Android, iOS */
+  }
+
+  html{
+    background-color: rgba(0, 0, 0, 0.5);
+  
+  }
+  
+  body {
+    margin: 0;
+  
+  }
+  
+ 
