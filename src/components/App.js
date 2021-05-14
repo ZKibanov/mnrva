@@ -1,3 +1,4 @@
+/* eslint-disable-next-line no-use-before-define */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
@@ -25,6 +26,7 @@ function App() {
     }
   };
 
+  /* eslint-disable-next-line react-hooks/exhaustive-deps */
   useEffect(() => downloadFromStore(), []);
 
   const saveToStore = () => {

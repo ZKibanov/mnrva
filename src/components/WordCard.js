@@ -1,3 +1,4 @@
+/* eslint-disable-next-line no-use-before-define */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editWord, deleteWord } from '../store/syns';
@@ -45,7 +46,7 @@ function WordCard(props) {
         />
       </form>
       <button type="submit" className="submit-btn" onClick={saveChanges}>
-        добавить
+        сохранить
       </button>
     </div>
   );
