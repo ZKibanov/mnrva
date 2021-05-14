@@ -23,7 +23,6 @@ function NewWordForm() {
   const onInputChange = (ev) => {
     setInputError(false);
     setInputValue(ev.target.value);
-    console.log(ev.target.value);
   };
 
   const antIcon = (

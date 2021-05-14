@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import WordCard from './WordCard';
 
 import './WordList.css';

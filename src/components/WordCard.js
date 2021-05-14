@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editWord, deleteWord } from '../store/syns';
-import ErrorBoundery from '../hoc/ErrorBoundary';
 import './WordCard.css';
 
 function WordCard(props) {
@@ -25,7 +24,6 @@ function WordCard(props) {
   };
 
   const onInputChange = (ev) => {
-    console.log(ev.target.value);
     setInputValue(ev.target.value);
   };
 

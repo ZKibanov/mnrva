@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
+import 'antd/dist/antd.css';
+import { Alert } from 'antd';
 import WordList from './WordList';
 import NewWordForm from './NewWordForm';
 import { setWordsToStore, setLoading, setError } from '../store/syns';
-import { setAsyncData, getAsyncData } from '../utils';
+import { getAsyncData } from '../utils';
 
 function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector((store) => store.isLoading);
   const isError = useSelector((store) => store.isError);
   const wordsArray = useSelector((store) => store.wordsArray);
 
@@ -16,13 +17,11 @@ function App() {
     try {
       dispatch(setLoading(true));
       const data = await getAsyncData();
-      console.log(data);
       if (data) dispatch(setWordsToStore(data));
       dispatch(setLoading(false));
     } catch (e) {
       dispatch(setLoading(false));
       dispatch(setError(true));
-      console.log(e);
     }
   };
 
@@ -69,11 +68,12 @@ function App() {
     </div>
   );
 
-  const errorMessage = (
-    <div>
-      <h1>Произошла ошибка, перезагрузи</h1>
-    </div>
-  );
+  const errorMessage =     <Alert
+  message="Ошибка связи"
+  description="Пожалуйста перезагрузите страницу."
+  type="error"
+  showIcon
+/>
 
   return (
     <>

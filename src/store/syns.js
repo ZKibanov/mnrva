@@ -1,6 +1,3 @@
-import { PayloadAction } from '@reduxjs/toolkit';
-import { Reducer, ReducerAction } from 'react';
-
 // initial state
 const initialState = {
   isLoading: false,
