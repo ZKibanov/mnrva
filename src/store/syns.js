@@ -15,8 +15,6 @@ const EDIT_WORD = 'editWord';
 const SET_WORDS_TO_STORE = 'setWordsToStore';
 const SET_ERROR = 'setError';
 const SET_LOADING = 'setLoading';
-const GET_DATA = 'getData';
-const SET_DATA = 'setData';
 
 // Action creators
 
@@ -34,11 +32,11 @@ export const deleteWord = (id) => ({
   },
 });
 
-export const editWord = (id,value) => ({
+export const editWord = (id, value) => ({
   type: EDIT_WORD,
   payload: {
     id,
-    value
+    value,
   },
 });
 
@@ -91,12 +89,13 @@ export default function reducer(state = initialState, action) {
       return newState;
     }
 
-    case EDIT_WORD:{
+    case EDIT_WORD: {
       const newWords = [
-        ...state.wordsArray.map(el=> el.id === action.payload.id ? 
-          {id:action.payload.id,value:action.payload.value}:
-          el
-        )
+        ...state.wordsArray.map((el) =>
+          el.id === action.payload.id
+            ? { id: action.payload.id, value: action.payload.value }
+            : el
+        ),
       ];
 
       const newState = {

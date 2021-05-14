@@ -7,18 +7,17 @@ import './WordCard.css';
 function WordCard(props) {
   const { id, value } = props.wordObject;
   const dispatch = useDispatch();
-  const [isEditing,setEditing] = useState(false)
-  const [inputValue,setInputValue] = useState(value)
-
+  const [isEditing, setEditing] = useState(false);
+  const [inputValue, setInputValue] = useState(value);
 
   const turnToEdit = () => {
-       setEditing(true);
+    setEditing(true);
   };
 
   const saveChanges = (ev) => {
     ev.preventDefault();
-     dispatch(editWord(id,inputValue))
-     setEditing(false);
+    dispatch(editWord(id, inputValue));
+    setEditing(false);
   };
 
   const deleteItem = () => {

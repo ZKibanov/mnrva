@@ -12,11 +12,11 @@
 
 .item-wrapper {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   padding: 11px;
   border-radius: 3px;
   background-color: #ffffff;
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 .item {
@@ -35,5 +35,5 @@
 }
 
 .btn-delete {
-  margin-left: 10px;
+  margin-left: 12px;
 }
