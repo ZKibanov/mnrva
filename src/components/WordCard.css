@@ -12,7 +12,7 @@
 
 .item-wrapper {
   display: flex;
-  align-items: baseline;
+  align-items: top;
   padding: 11px;
   border-radius: 3px;
   background-color: #ffffff;

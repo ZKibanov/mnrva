@@ -64,7 +64,7 @@
 }
 
 .word-edit-form_input {
-  margin-top:2px;
+  margin-top: 2px;
   height: 36px;
   width: 100%;
   border-bottom: 1px solid #34427380;
@@ -74,13 +74,12 @@
 
 .word-edit-form_input:focus {
   outline: none;
-  border-bottom: 1px solid #344273
+  border-bottom: 1px solid #344273;
 }
 
-  .word-edit-form_input:hover {
-    outline: none;
-  }
-
+.word-edit-form_input:hover {
+  outline: none;
+}
 
 .word-edit-form_input::placeholder {
   color: #34427380;
@@ -99,9 +98,9 @@
 }
 
 .word-edit-form_info-btn {
-  position:relative;
-  top:5px;
-  display:inline;
+  position: relative;
+  top: 5px;
+  display: inline;
   vertical-align: top;
   margin-left: 10px;
   width: 14px;

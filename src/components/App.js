@@ -68,12 +68,14 @@ function App() {
     </div>
   );
 
-  const errorMessage =     <Alert
-  message="Ошибка связи"
-  description="Пожалуйста перезагрузите страницу."
-  type="error"
-  showIcon
-/>
+  const errorMessage = (
+    <Alert
+      message="Ошибка связи"
+      description="Пожалуйста перезагрузите страницу."
+      type="error"
+      showIcon
+    />
+  );
 
   return (
     <>
