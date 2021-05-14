@@ -1,29 +1,33 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addWord, deleteWord } from '../store/syns';
-import ErrorBoundery from '../hoc/ErrorBoundary'
+import { editWord, deleteWord } from '../store/syns';
+import ErrorBoundery from '../hoc/ErrorBoundary';
 import './WordCard.css';
 
-function WordCard(wordObject) {
-  const { id, value } = wordObject;  
+function WordCard(props) {
+  const { id, value } = props.wordObject;
   const dispatch = useDispatch();
+  const [isEditing,setEditing] = useState(false)
+  const [inputValue,setInputValue] = useState(value)
+
 
   const turnToEdit = () => {
- //   setEditing(true);
+       setEditing(true);
   };
 
   const saveChanges = (ev) => {
     ev.preventDefault();
-   // setEditing(false);
+     dispatch(editWord(id,inputValue))
+     setEditing(false);
   };
 
   const deleteItem = () => {
-    dispatch(deleteWord(id))
+    dispatch(deleteWord(id));
   };
 
   const onInputChange = (ev) => {
     console.log(ev.target.value);
- //   setInputValue(ev.target.value);
+    setInputValue(ev.target.value);
   };
 
   const WordEditForm = (
@@ -68,9 +72,10 @@ function WordCard(wordObject) {
   );
 
   return (
-    <li key={id}>
+    <li>
       <div>
-        {Item}
+        {!isEditing && Item}
+        {isEditing && WordEditForm}
       </div>
     </li>
   );

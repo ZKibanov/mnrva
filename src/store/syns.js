@@ -11,6 +11,7 @@ const initialState = {
 // Action types
 const ADD_WORD = 'addWord';
 const DELETE_WORD = 'deleteWord';
+const EDIT_WORD = 'editWord';
 const SET_WORDS_TO_STORE = 'setWordsToStore';
 const SET_ERROR = 'setError';
 const SET_LOADING = 'setLoading';
@@ -33,12 +34,20 @@ export const deleteWord = (id) => ({
   },
 });
 
+export const editWord = (id,value) => ({
+  type: EDIT_WORD,
+  payload: {
+    id,
+    value
+  },
+});
+
 export const setWordsToStore = (words) => ({
   type: SET_WORDS_TO_STORE,
-  payload:{
-    words
-  }
-})
+  payload: {
+    words,
+  },
+});
 
 export const setError = (isError) => ({
   type: SET_ERROR,
@@ -82,18 +91,33 @@ export default function reducer(state = initialState, action) {
       return newState;
     }
 
-    case SET_WORDS_TO_STORE:{
-      const newState = {...state,wordsArray:action.payload.words}
-      return newState;
-    }
-    
-    case SET_LOADING:{
-      const newState = {...state,isLoading:action.payload.isLoading}
+    case EDIT_WORD:{
+      const newWords = [
+        ...state.wordsArray.map(el=> el.id === action.payload.id ? 
+          {id:action.payload.id,value:action.payload.value}:
+          el
+        )
+      ];
+
+      const newState = {
+        ...state,
+        wordsArray: newWords,
+      };
       return newState;
     }
 
-    case SET_ERROR:{
-      const newState = {...state,isError:action.payload.isError}
+    case SET_WORDS_TO_STORE: {
+      const newState = { ...state, wordsArray: action.payload.words };
+      return newState;
+    }
+
+    case SET_LOADING: {
+      const newState = { ...state, isLoading: action.payload.isLoading };
+      return newState;
+    }
+
+    case SET_ERROR: {
+      const newState = { ...state, isError: action.payload.isError };
       return newState;
     }
 

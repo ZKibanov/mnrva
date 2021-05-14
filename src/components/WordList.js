@@ -1,14 +1,16 @@
 import React from 'react';
-import { useEffect,useSelector } from 'react-redux';
+import { useEffect, useSelector } from 'react-redux';
 import WordCard from './WordCard';
 
 import './WordList.css';
 
 function WordList() {
-  const words = useSelector(state => state.wordsArray);
+  const words = useSelector(store => store.wordsArray);
   return (
     <div className="item-list-wrapper">
-      <ul className="item-list">{words.map((item) => WordCard(item))}</ul>
+      <ul className="item-list">
+        {words.map(item => <WordCard wordObject={item} key={item.id}/>)}
+      </ul>
     </div>
   );
 }
